@@ -1,3 +1,5 @@
+本项目基于高斯混合建模和深度学习回归，解决了NMR实验后复杂混合物质图谱解析的难题，可精准识别各组分浓度，特别适用于小面积物质的检测
+
 Class1_model 比较了model在intensity最大最小比值从100:1 到 1000:1 的表现
 Final_model 提取了model中600:1的成果 并保存了model在my_model.h5中
 
@@ -6,7 +8,7 @@ Final_model 提取了model中600:1的成果 并保存了model在my_model.h5中
 Class1_model 在最后可视化了model在不同比例下的absolute error（pred-true） 和  relative error(pred-true)/true的 avg mean median std max min 值
 
 
-Generation file是原先生成数据到excel中使用的
+Generation file用于生成数据至excel
 
 
 
