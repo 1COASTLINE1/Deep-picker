@@ -1,27 +1,46 @@
-本项目基于高斯混合建模和深度学习回归，解决了NMR实验后复杂混合物质图谱解析的难题，可精准识别各组分浓度，特别适用于小面积物质的检测
+# Deep-picker
 
-Class1_model 比较了model在intensity最大最小比值从100:1 到 1000:1 的表现
-Final_model 提取了model中600:1的成果 并保存了model在my_model.h5中
+A deep learning and Gaussian mixture modeling-based framework for analyzing complex NMR spectra of mixed substances.
 
-在demonstration中 通过手动替换my_model文件 可以展示model 在具体情况下的预测表现，demonstration.py展示了原本的光谱图与最终预测出的光谱图的区别 并展示了pred的area value
+## 📌 Project Overview
 
-Class1_model 在最后可视化了model在不同比例下的absolute error（pred-true） 和  relative error(pred-true)/true的 avg mean median std max min 值
+This project addresses the challenge of analyzing NMR spectra from complex mixtures using a combination of **Gaussian Mixture Modeling (GMM)** and **Deep Learning Regression**. It enables precise concentration identification of individual components, especially effective for detecting **low-intensity (small-area) signals**.
 
+---
 
-Generation file用于生成数据至excel
+## 🧠 Models and Structure
 
+### `Class1_model/`
+- Compares model performance under varying intensity ratios ranging from **100:1 to 1000:1**.
+- Includes visualizations of:
+  - **Absolute Error**: `pred - true`
+  - **Relative Error**: `(pred - true) / true`
+  - Summary statistics: **mean**, **median**, **std**, **max**, **min**
 
+### `Final_model/`
+- Uses results from the **600:1 intensity ratio**
+- Trained model saved as: `my_model.h5`
 
-训练数据是利用多个高斯峰拟合出的合成峰 合成函数在final_version的Generate_comparision中
+### `demonstration.py`
+- Demonstrates model predictions using `my_model.h5`
+- Visual comparison between:
+  - Original spectrum
+  - Predicted spectrum
+- Outputs predicted **area values**.
 
+---
 
+## 📊 Data Generation
 
-使用vscode远程连接服务器
-Docker 环境下 
-使用 Dockerfile 编译环境
+### `Generation/`
+- Generates synthetic data by fitting multiple Gaussian peaks
+- Outputs formatted Excel files
+- Core synthetic generation located in `final_version/Generate_comparision.py`
+
+---
+
+## ⚙️ Environment Setup (Docker + VSCode Remote)
+
+### Build Docker Image
+```bash
 sudo docker build -t my-jupyter-notebook-gpu .
-
-启动
-sudo docker run --gpus all -it --rm -p 8888:8888 -v $(pwd):/workspace my-jupyter-notebook-gpu
-
-浏览器打开后复制terminal中的token并login即可进入
